@@ -43,29 +43,13 @@ export default class InnFormWidget {
             <input class="input" type="number" placeholder="Введите номер карты">
             <button class="button" type="submit">Далее</button>
           </div>
-          <div class="result hidden">
+          <div class="result">
             <p class="result_text">карта существует/не существует</p>
           </div>
         </form>
       </div>
     </div>
   </div>`;
-  }
-
-  static get submitSelector() { // кнопка с событием
-    return '.button';
-  }
-
-  static get inputSelector() { // поле в котором читаем номер
-    return '.input';
-  }
-
-  static get selector() { // элемент, который вставляем
-    return '.validator_body';
-  }
-
-  static get resultSelector() { // поле в которое выводим результат
-    return '.result_text';
   }
 
   bindToDOM() {
@@ -75,24 +59,26 @@ export default class InnFormWidget {
     this.submit = this.element.querySelector('.button');
     this.input = this.element.querySelector('.input');
 
-    this.result = this.element.querySelector('.result_text');
+    this.resultcont = this.element.querySelector('.result');
+    this.result = this.element.querySelector('.result_text p');
 
-    this.submit.addEventListener('click', this.onSubmit(this.result));
+    this.submit.addEventListener('click', this.onSubmit);
   }
 
-  onSubmit(element) {
-    const { value } = element;
+  onSubmit(e) {
+    e.preventDefault();
+    const value  = this.result.textContent;
 
     if (isValidInn(value)) {
       this.result.classList.add('valid');
-      // this.result.classList.remove('invalid');
+      this.result.classList.remove('invalid');
       this.result.textContent = 'card is valid';
-      this.result.classList.remove('hidden');
+      this.resultcont.classList.remove('hidden');
     } else {
       this.result.classList.add('invalid');
-      // this.result.classList.remove('valid');
+      this.result.classList.remove('valid');
       this.result.textContent = 'card is not valid';
-      this.result.classList.remove('hidden');
+      this.resultcont.classList.remove('hidden');
     }
   }
 }
