@@ -67,7 +67,7 @@ export default class InnFormWidget {
 
   onSubmit(e) {
     e.preventDefault();
-    const value  = this.result.textContent;
+    const value = this.result.textContent;
 
     if (isValidInn(value)) {
       this.result.classList.add('valid');
