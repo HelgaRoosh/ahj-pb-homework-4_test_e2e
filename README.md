@@ -1,5 +1,7 @@
 #CI Test Demo
 
+[![Build status](https://ci.appveyor.com/api/projects/status/1psgr6ixtnp1gib3?svg=true)](https://ci.appveyor.com/project/HelgaRoosh/ahj-pb-homework-4-test-e2e)
+
 
  
 

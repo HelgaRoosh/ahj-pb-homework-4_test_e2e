@@ -81,7 +81,7 @@ export default class InnFormWidget {
   }
 
   onSubmit(element) {
-    const { value } = element;    
+    const { value } = element;
 
     if (isValidInn(value)) {
       this.result.classList.add('valid');
