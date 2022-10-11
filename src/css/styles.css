@@ -50,6 +50,15 @@ body {
   background-position: center;
 }
 
+.cardMain {
+  border: 5px solid green;
+  border-radius: 5px;
+}
+
+.cardNoMain {
+  opacity: 0.3;
+}
+
 .amex {
   background-image: url('../img/american-express.svg');
 }

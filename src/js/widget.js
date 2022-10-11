@@ -1,4 +1,4 @@
-import isValidInn from './validator';
+import isValidInn, { paySystem } from './validator';
 
 export default class InnFormWidget {
   constructor(parentEl) {
@@ -16,26 +16,26 @@ export default class InnFormWidget {
       <div class="validator_widget widget">
         <ul class="widget_list">
            <div class="widget_item">
-             <li class="card visa"><span class="hidden">Visa</span></li>
+             <li class="card visa cardNoMain"><span class="hidden">Visa</span></li>
            </div>
            <div class="widget_item">
-             <li class="card mastercard"><span class="hidden">MasterCard</span>
+             <li class="card mastercard cardNoMain"><span class="hidden">MasterCard</span>
              </li>
            </div>
            <div class="widget_item">
-             <li class="card amex"><span class="hidden">American Express</span></li>
+             <li class="card amex cardNoMain"><span class="hidden">American Express</span></li>
            </div>
            <div class="widget_item">
-             <li class="card discover"><span class="hidden">Discover</span></li>
+             <li class="card discover cardNoMain"><span class="hidden">Discover</span></li>
            </div>
            <div class="widget_item">
-             <li class="card jcb"><span class="hidden">JCB</span></li>
+             <li class="card jcb cardNoMain"><span class="hidden">JCB</span></li>
            </div>
            <div class="widget_item">
-             <li class="card diners"><span class="hidden">Dinners Club</span></li>
+             <li class="card diners cardNoMain"><span class="hidden">Dinners Club</span></li>
            </div>
            <div class="widget_item">
-             <li class="card mir"><span class="hidden">МИР</span></li>
+             <li class="card mir cardNoMain"><span class="hidden">МИР</span></li>
            </div>
          </ul>
         <form class="widget_form">
@@ -71,10 +71,17 @@ export default class InnFormWidget {
   onSubmit() {
     const { value } = this.input;
     if (isValidInn(value)) {
+      this.showCard(value);
       this.showMessage('valid', 'invalid', 'card is valid');
     } else {
       this.showMessage('invalid', 'valid', 'card is not valid');
     }
+  }
+
+  showCard(value) {
+    this.cardPay = this.element.querySelector(paySystem(value));
+    this.cardPay.classList.remove('cardNoMain');
+    this.cardPay.classList.add('cardMain');
   }
 
   showMessage(classAdd, classRemote, text) {
