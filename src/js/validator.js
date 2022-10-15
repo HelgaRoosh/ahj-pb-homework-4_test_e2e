@@ -15,7 +15,7 @@ export default function isValidInn(value) {
   return (paramLuhn && paramLenght && paramOnlyNumber && paramPay);
 }
 
-function paramPaySystem(value) { // paramPay не принадлежит ни одной системе -> false
+export function paramPaySystem(value) { // paramPay не принадлежит ни одной системе -> false
   if (paySystem(value) != null) {
     return true;
   }
@@ -47,7 +47,7 @@ function paramOnlyNumbers(value) { // содержит не цифры -> false
   return regex.test(value);
 }
 
-function controlLuhn(value) { // метод луна
+export function controlLuhn(value) { // метод луна
   let sum = 0;
   let even = false;
   if (value) {
