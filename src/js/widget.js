@@ -90,5 +90,18 @@ export default class InnFormWidget {
     this.result.textContent = text;
     this.resultcont.classList.remove('hidden');
     this.result.classList.remove('hidden');
+
+    this.input.addEventListener('click', () => {
+      this.clearAll();
+    });
+  }
+
+  clearAll() {
+    this.resultcont.classList.add('hidden');
+    this.result.classList.add('hidden');
+    this.cardPay.classList.remove('cardMain');
+    this.cardPay.classList.add('cardNoMain');
+
+    this.input.value = '';
   }
 }

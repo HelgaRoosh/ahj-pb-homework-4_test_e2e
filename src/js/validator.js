@@ -32,14 +32,14 @@ export function paySystem(value) { // paramPay не принадлежит ни 
     payClass = '.amex';
   } if (/^(?:2131|1800|35\d{3})\d{11}/.test(value)) {
     payClass = '.jcb';
-  } if (/^2||6/.test(value)) {
+  } if (/^2/.test(value)) {
     payClass = '.mir';
   } if (/^6(?:011|5)/.test(value)) {
     payClass = '.discover';
   } if (/^3(?:0[0-5]|[68])/.test(value)) {
     payClass = '.diners';
   }
-  return payClass;
+  return payClass; // все время возвращает мир!!!
 }
 
 function paramOnlyNumbers(value) { // содержит не цифры -> false
